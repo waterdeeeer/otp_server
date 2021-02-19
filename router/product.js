@@ -1,12 +1,13 @@
 import Router from "koa-router";
 
-import Product from "../model/product.js";
+import Model from "../model/index.js";
 
 const router = new Router();
+const { product } = Model;
 
 // find products by name
 
 export default router.get("/product", async (ctx) => {
   const name = ctx.params.name;
-  ctx.body = await Product.find({ name: { $regex: name ? name : "" } });
+  ctx.body = await product.find({ name: { $regex: name ? name : "" } });
 });
