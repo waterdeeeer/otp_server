@@ -2,7 +2,7 @@ import Koa from "koa";
 import mongoose from "mongoose";
 import bodyParser from "koa-bodyparser";
 
-import router from "./router";
+import router from "./router/index.js";
 
 const app = new Koa();
 
@@ -17,7 +17,7 @@ mongoose.connect(
   mongooseOption
 );
 
-app.use(bodyParser()).use(router.routes()).use(router.allowedMethods());
+app.use(bodyParser()).use(router());
 
 app.listen(4000, () => {
   console.log("The server is listeneing to port 4000");

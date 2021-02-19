@@ -8,5 +8,5 @@ const router = new Router();
 
 export default router.get("/product", async (ctx) => {
   const name = ctx.params.name;
-  ctx.body = Product.find({ name: { $regex: name ? name : "" } });
+  ctx.body = await Product.find({ name: { $regex: name ? name : "" } });
 });
