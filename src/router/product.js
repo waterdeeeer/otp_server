@@ -2,7 +2,9 @@ import Router from "koa-router";
 import api from '../api/index.js'
 
 const router = new Router();
-
+router.post("/product/add",async (ctx)=>{
+	await api.product.add(ctx.request.body)
+})
 router.post("/product/find", async (ctx) => {
     ctx.body = await api.product.find(ctx.request.body)
 })

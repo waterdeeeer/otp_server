@@ -4,18 +4,19 @@ import * as product from './product.js'
 import * as parentCategory from './parent_category.js'
 import * as brand from './brand.js'
 import * as cooperation from './cooperation.js'
-
+import * as image from './product_image.js'
 class Api {
-	constructor(category, product, parentCategory, brand, cooperation) {
+	constructor(category, product, parentCategory, brand, cooperation,image) {
 		this.category = category
 		this.product = product
 		this.parentCategory = parentCategory
 		this.brand = brand
 		this.cooperation = cooperation
+		this.image = image
 	}
 }
 
-const api = new Api(category, product, parentCategory, brand, cooperation)
+const api = new Api(category, product, parentCategory, brand, cooperation,image)
 
 export const initDB = () => {
 	const mongooseOption = {
@@ -24,7 +25,7 @@ export const initDB = () => {
 		useCreateIndex: true,
 	};
 	mongoose.connect(
-		"mongodb+srv://public:123@onthepiknic.x4rrw.mongodb.net/onthepiknic?retryWrites=true&w=majority",
+		"mongodb+srv://public:123@cluster0.jfwqf.mongodb.net/onthepiknic?retryWrites=true&w=majority",
 		mongooseOption
 	);
 	const db = mongoose.connection;
